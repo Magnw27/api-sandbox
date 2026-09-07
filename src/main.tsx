@@ -6,8 +6,16 @@ import Sandbox from './Sandbox'
 
 const isSandbox = window.location.pathname.replace(/\/$/, '') === '/sandbox'
 
-createRoot(document.getElementById('root')!).render(
+const root = createRoot(document.getElementById('root')!)
+root.render(
   <StrictMode>
     {isSandbox ? <Sandbox /> : <App />}
   </StrictMode>,
 )
+
+if (!isSandbox) {
+  window.setTimeout(() => {
+    const button = [...document.querySelectorAll('button')].find((item) => item.textContent?.includes('Enter the sandbox'))
+    button?.addEventListener('click', () => { window.location.href = '/sandbox' }, { capture: true })
+  }, 0)
+}
