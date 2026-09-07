@@ -1,10 +1,10 @@
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 
 type IconName = 'arrow' | 'grid' | 'terminal' | 'spark' | 'menu' | 'close' | 'check' | 'pulse'
 
 function Icon({ name }: { name: IconName }) {
   const common = { width: 18, height: 18, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.7, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const }
-  const paths: Record<IconName, JSX.Element> = {
+  const paths: Record<IconName, ReactNode> = {
     arrow: <><path d="M5 12h13" /><path d="m13 6 6 6-6 6" /></>,
     grid: <><rect x="4" y="4" width="6" height="6" rx="1" /><rect x="14" y="4" width="6" height="6" rx="1" /><rect x="4" y="14" width="6" height="6" rx="1" /><rect x="14" y="14" width="6" height="6" rx="1" /></>,
     terminal: <><path d="m6 8 4 4-4 4" /><path d="M13 16h5" /></>,
